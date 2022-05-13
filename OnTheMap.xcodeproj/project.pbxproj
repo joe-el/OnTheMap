@@ -135,8 +135,8 @@
 		57C0FBC6282D618400BB967E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				57C0FBE1282D76B700BB967E /* LoginButton.swift */,
 				57C0FBE3282D771100BB967E /* LoginTextField.swift */,
+				57C0FBE1282D76B700BB967E /* LoginButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
