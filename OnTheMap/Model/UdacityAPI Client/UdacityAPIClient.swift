@@ -9,7 +9,7 @@ import Foundation
 
 class UdacityAPIClient {
     
-    // Authentication Properties:
+    // MARK: - Authentication Properties
     struct Auth {
         static var userId = ""
         static var objectId = "c9t2intc4s60t6a96dh0"
@@ -17,7 +17,7 @@ class UdacityAPIClient {
         static var sessionId = ""
     }
 
-    // Udacity API URL's:
+    // MARK: - Udacity API URL's
     enum Endpoints {
         static let studentLocationURL = "https://onthemap-api.udacity.com/v1/StudentLocation"
         static let sessionURL = "https://onthemap-api.udacity.com/v1/session"
@@ -66,7 +66,7 @@ class UdacityAPIClient {
         }
     }
     
-    // GETing multiple student locations at one time:
+    // MARK: - GETing multiple student locations at one time:
     func taskForGETRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
@@ -89,7 +89,7 @@ class UdacityAPIClient {
         task.resume()
     }
 
-    // POSTing a new student location:
+    // MARK: - POSTing a new student location:
     func taskForPOSTRequest<RequestType: Encodable, ResponseType: Decodable>(url: URL, postingSession: Bool, body: RequestType, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -130,7 +130,7 @@ class UdacityAPIClient {
         //CFRunLoopRun()
     }
 
-    // PUTing a student location by update an existing student location:
+    // MARK: - PUTing a student location by update an existing student location:
     func taskForPUTRequest<RequestType: Encodable, ResponseType: Decodable>(url: URL, body: RequestType, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
@@ -153,7 +153,8 @@ class UdacityAPIClient {
         }
         task.resume()
     }
-
+    
+    //MARK: - POSTing a Session
     func taskForPOSTSession<RequestType: Encodable, ResponseType: Decodable>(url: URL, body: RequestType, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void){
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -190,6 +191,7 @@ class UdacityAPIClient {
         task.resume()
     }
 
+    // MARK: - DELETEing a session
     func taskForDELETERequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
@@ -224,6 +226,7 @@ class UdacityAPIClient {
         task.resume()
     }
     
+    // MARK: - GETting Public User Data
     // retrieve some basic user information before posting data to Parse(Udacity):
     func getPulicUserData() {
         let request = URLRequest(url: Endpoints.publicUserData(Auth.userId).url)

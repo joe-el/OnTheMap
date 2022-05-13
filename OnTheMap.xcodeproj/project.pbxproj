@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		57AB7969282E34F200D22124 /* MapTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB7968282E34F200D22124 /* MapTabViewController.swift */; };
+		57AB796B282E36AB00D22124 /* TableTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB796A282E36AB00D22124 /* TableTabViewController.swift */; };
+		57AB796D282E36EE00D22124 /* InfoPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB796C282E36EE00D22124 /* InfoPostingViewController.swift */; };
 		57C0FBB0282D5FE500BB967E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C0FBAF282D5FE500BB967E /* AppDelegate.swift */; };
 		57C0FBB2282D5FE500BB967E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C0FBB1282D5FE500BB967E /* SceneDelegate.swift */; };
-		57C0FBB4282D5FE500BB967E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C0FBB3282D5FE500BB967E /* ViewController.swift */; };
+		57C0FBB4282D5FE500BB967E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C0FBB3282D5FE500BB967E /* LoginViewController.swift */; };
 		57C0FBB7282D5FE500BB967E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57C0FBB5282D5FE500BB967E /* Main.storyboard */; };
 		57C0FBB9282D5FE900BB967E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C0FBB8282D5FE900BB967E /* Assets.xcassets */; };
 		57C0FBBC282D5FE900BB967E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57C0FBBA282D5FE900BB967E /* LaunchScreen.storyboard */; };
@@ -23,13 +26,19 @@
 		57C0FBDC282D72A800BB967E /* SessionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C0FBDB282D72A800BB967E /* SessionResponse.swift */; };
 		57C0FBDE282D732C00BB967E /* UdacityAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C0FBDD282D732C00BB967E /* UdacityAPIResponse.swift */; };
 		57C0FBE0282D733E00BB967E /* DeleteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C0FBDF282D733E00BB967E /* DeleteResponse.swift */; };
+		57C0FBE2282D76B700BB967E /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C0FBE1282D76B700BB967E /* LoginButton.swift */; };
+		57C0FBE4282D771100BB967E /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C0FBE3282D771100BB967E /* LoginTextField.swift */; };
+		57C0FBE6282D777500BB967E /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C0FBE5282D777500BB967E /* UIViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		57AB7968282E34F200D22124 /* MapTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTabViewController.swift; sourceTree = "<group>"; };
+		57AB796A282E36AB00D22124 /* TableTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableTabViewController.swift; sourceTree = "<group>"; };
+		57AB796C282E36EE00D22124 /* InfoPostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPostingViewController.swift; sourceTree = "<group>"; };
 		57C0FBAC282D5FE500BB967E /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57C0FBAF282D5FE500BB967E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		57C0FBB1282D5FE500BB967E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		57C0FBB3282D5FE500BB967E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		57C0FBB3282D5FE500BB967E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		57C0FBB6282D5FE500BB967E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		57C0FBB8282D5FE900BB967E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57C0FBBB282D5FE900BB967E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -44,6 +53,9 @@
 		57C0FBDB282D72A800BB967E /* SessionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionResponse.swift; sourceTree = "<group>"; };
 		57C0FBDD282D732C00BB967E /* UdacityAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityAPIResponse.swift; sourceTree = "<group>"; };
 		57C0FBDF282D733E00BB967E /* DeleteResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteResponse.swift; sourceTree = "<group>"; };
+		57C0FBE1282D76B700BB967E /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
+		57C0FBE3282D771100BB967E /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
+		57C0FBE5282D777500BB967E /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +112,11 @@
 		57C0FBC4282D60FC00BB967E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				57C0FBB3282D5FE500BB967E /* ViewController.swift */,
+				57C0FBB3282D5FE500BB967E /* LoginViewController.swift */,
+				57AB7968282E34F200D22124 /* MapTabViewController.swift */,
+				57AB796A282E36AB00D22124 /* TableTabViewController.swift */,
+				57AB796C282E36EE00D22124 /* InfoPostingViewController.swift */,
+				57C0FBE5282D777500BB967E /* UIViewController+Extension.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -119,6 +135,8 @@
 		57C0FBC6282D618400BB967E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				57C0FBE1282D76B700BB967E /* LoginButton.swift */,
+				57C0FBE3282D771100BB967E /* LoginTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -232,19 +250,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57C0FBE6282D777500BB967E /* UIViewController+Extension.swift in Sources */,
 				57C0FBDC282D72A800BB967E /* SessionResponse.swift in Sources */,
 				57C0FBD0282D68D700BB967E /* StudentLocation.swift in Sources */,
-				57C0FBB4282D5FE500BB967E /* ViewController.swift in Sources */,
+				57C0FBB4282D5FE500BB967E /* LoginViewController.swift in Sources */,
 				57C0FBCE282D678300BB967E /* UdacityAPIClient.swift in Sources */,
 				57C0FBB0282D5FE500BB967E /* AppDelegate.swift in Sources */,
 				57C0FBE0282D733E00BB967E /* DeleteResponse.swift in Sources */,
 				57C0FBC9282D62AF00BB967E /* StudentLocationModel.swift in Sources */,
 				57C0FBD2282D6DDA00BB967E /* LoginRequest.swift in Sources */,
 				57C0FBDA282D724900BB967E /* UpdateStudentLocationResponse.swift in Sources */,
+				57C0FBE4282D771100BB967E /* LoginTextField.swift in Sources */,
+				57C0FBE2282D76B700BB967E /* LoginButton.swift in Sources */,
 				57C0FBB2282D5FE500BB967E /* SceneDelegate.swift in Sources */,
 				57C0FBD6282D70E200BB967E /* PublicUserDataResponse.swift in Sources */,
+				57AB796D282E36EE00D22124 /* InfoPostingViewController.swift in Sources */,
 				57C0FBD8282D71D400BB967E /* StudentLocationResponse.swift in Sources */,
 				57C0FBDE282D732C00BB967E /* UdacityAPIResponse.swift in Sources */,
+				57AB7969282E34F200D22124 /* MapTabViewController.swift in Sources */,
+				57AB796B282E36AB00D22124 /* TableTabViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
