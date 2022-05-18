@@ -2,7 +2,7 @@
 //  UIViewController+Extension.swift
 //  OnTheMap
 //
-//  Created by Kenneth Gutierrez on 5/12/22.
+//  Created by Kenneth Gutierrez on 5/16/22.
 //
 
 import Foundation
@@ -10,15 +10,12 @@ import UIKit
 
 extension UIViewController {
     
-    @IBAction func logoutButton(_ sender: UIBarButtonItem) {
-        //dismiss(animated: true, completion: nil)
+    @IBAction func logoutTapped(_ sender: UIBarButtonItem) {
         UdacityAPIClient.logout { (success, error) in
             if success {
-                DispatchQueue.main.async {
-                    self.dismiss(animated: true, completion: nil)
-                }
+                self.dismiss(animated: true, completion: nil)
             } else {
-                print(error!)
+                self.handleFailureAlert(title: "Logout Failed", message: error?.localizedDescription ?? "")
             }
         }
     }

@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct StudentLocation: Codable, Equatable {
+struct StudentInformation: Codable {
     
-    struct GetStudentLocation: Codable, Equatable {
+    struct StudentsData: Codable {
         /* YOU DO NOT HAVE TO WORRY ABOUT PARSING DATE OR ACL TYPES. */
         // the date when the student location was created:
         let createdAt: String
@@ -41,6 +41,6 @@ struct StudentLocation: Codable, Equatable {
         //let ACL: String
     }
     
-    let results: [GetStudentLocation]
+    let results: [StudentsData]
     
 }
