@@ -29,8 +29,9 @@
 		57C0FBE0282D733E00BB967E /* DeleteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C0FBDF282D733E00BB967E /* DeleteResponse.swift */; };
 		57C0FBE2282D76B700BB967E /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C0FBE1282D76B700BB967E /* LoginButton.swift */; };
 		57C0FBE4282D771100BB967E /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C0FBE3282D771100BB967E /* LoginTextField.swift */; };
-		57C55A5F2834DC4C0022775C /* showAlertViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C55A5E2834DC4C0022775C /* showAlertViewController+Extension.swift */; };
+		57C55A5F2834DC4C0022775C /* ShowAlertViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C55A5E2834DC4C0022775C /* ShowAlertViewController+Extension.swift */; };
 		57D0BFB32831641500D91263 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0BFB22831641400D91263 /* ErrorResponse.swift */; };
+		57EB729E283633D300CE0780 /* OpenWebsiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EB729D283633D200CE0780 /* OpenWebsiteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,8 +59,9 @@
 		57C0FBDF282D733E00BB967E /* DeleteResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteResponse.swift; sourceTree = "<group>"; };
 		57C0FBE1282D76B700BB967E /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		57C0FBE3282D771100BB967E /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
-		57C55A5E2834DC4C0022775C /* showAlertViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "showAlertViewController+Extension.swift"; sourceTree = "<group>"; };
+		57C55A5E2834DC4C0022775C /* ShowAlertViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShowAlertViewController+Extension.swift"; sourceTree = "<group>"; };
 		57D0BFB22831641400D91263 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		57EB729D283633D200CE0780 /* OpenWebsiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWebsiteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +122,8 @@
 				57AB7968282E34F200D22124 /* MapTabViewController.swift */,
 				57AB796A282E36AB00D22124 /* TableTabViewController.swift */,
 				57AB796C282E36EE00D22124 /* InfoPostingViewController.swift */,
-				57C55A5E2834DC4C0022775C /* showAlertViewController+Extension.swift */,
+				57EB729D283633D200CE0780 /* OpenWebsiteViewController.swift */,
+				57C55A5E2834DC4C0022775C /* ShowAlertViewController+Extension.swift */,
 				5763BBDF2832376D00CC639B /* UIViewController+Extension.swift */,
 			);
 			path = Controller;
@@ -262,7 +265,7 @@
 				57C0FBCE282D678300BB967E /* UdacityAPIClient.swift in Sources */,
 				57C0FBB0282D5FE500BB967E /* AppDelegate.swift in Sources */,
 				57C0FBE0282D733E00BB967E /* DeleteResponse.swift in Sources */,
-				57C55A5F2834DC4C0022775C /* showAlertViewController+Extension.swift in Sources */,
+				57C55A5F2834DC4C0022775C /* ShowAlertViewController+Extension.swift in Sources */,
 				57C0FBC9282D62AF00BB967E /* StudentInformationModel.swift in Sources */,
 				57C0FBD2282D6DDA00BB967E /* LoginRequest.swift in Sources */,
 				5763BBE02832376D00CC639B /* UIViewController+Extension.swift in Sources */,
@@ -272,6 +275,7 @@
 				57C0FBB2282D5FE500BB967E /* SceneDelegate.swift in Sources */,
 				57C0FBD6282D70E200BB967E /* PublicUserDataResponse.swift in Sources */,
 				57AB796D282E36EE00D22124 /* InfoPostingViewController.swift in Sources */,
+				57EB729E283633D300CE0780 /* OpenWebsiteViewController.swift in Sources */,
 				57D0BFB32831641500D91263 /* ErrorResponse.swift in Sources */,
 				57C0FBD8282D71D400BB967E /* StudentLocationResponse.swift in Sources */,
 				57C0FBDE282D732C00BB967E /* UdacityAPIResponse.swift in Sources */,

@@ -271,6 +271,9 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="b49-NN-NQe">
                                 <rect key="frame" x="0.0" y="56" width="414" height="757"/>
+                                <connections>
+                                    <outlet property="delegate" destination="3wz-RM-yUa" id="eiP-41-ioq"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="afs-pB-NrH"/>
