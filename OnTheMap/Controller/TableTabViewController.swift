@@ -53,32 +53,27 @@ extension TableTabViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let studentData = StudentInformationModel.studentLocation[indexPath.row]
-//
-//        // Need to check if valid address is given or any at all-need a throw...
-//        let studentWebSite = URL(string: studentData.mediaURL)!
-//
-//        UIApplication.shared.open(studentWebSite, options: [:], completionHandler: nil)
-        
-        do {
-            try openWebsiteLink(indexPath: indexPath.row)
-        } catch let error as NSError {
-            handleFailureAlert(title: "Failed to Open ", message: error as! String)
-        }
-        
+        let studentData = StudentInformationModel.studentLocation[indexPath.row]
+        openWebsiteLink(urlString: studentData.mediaURL)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func openWebsiteLink(indexPath: Int) throws {
-        let studentData = StudentInformationModel.studentLocation[indexPath]
+    func openWebsiteLink(urlString: String?) {
+        guard let urlString = urlString else {
+            handleFailureAlert(title: "Failed to Open ", message: "No web address given.")
+            return
+        }
         
-        // Need to check if valid address is given or any at all-need a throw...
-        let studentWebSite = URL(string: studentData.mediaURL)!
-        
-        do {
-            let _ = try UIApplication.shared.open(studentWebSite, options: [:], completionHandler: nil)
-        } catch let error as NSError {
-            handleFailureAlert(title: "Failed to Open ", message: error as! String)
+        let studentWebSite = URL(string: urlString)
+        if let validURLString = studentWebSite {
+            let validURL: Bool = UIApplication.shared.canOpenURL(validURLString)
+            if validURL {
+                UIApplication.shared.open(validURLString, options: [:], completionHandler: nil)
+            } else {
+                handleFailureAlert(title: "Failed to Open ", message: "Invalid web address.")
+            }
+        } else {
+            handleFailureAlert(title: "Failed to Open ", message: "No web address given.")
         }
     }
 
