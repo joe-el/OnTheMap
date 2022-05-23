@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
         if success {
             self.performSegue(withIdentifier: "completeLogin", sender: nil)
         } else {
-            handleFailureAlert(title: "Login Failed", message: "Incorrect email and password.")
+            handleFailureAlert(title: "Login Failed", message: error?.localizedDescription ?? "Incorrect email and password.")
         }
     }
     

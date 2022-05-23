@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5763BBE02832376D00CC639B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763BBDF2832376D00CC639B /* UIViewController+Extension.swift */; };
+		5763BBE02832376D00CC639B /* LogoutViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763BBDF2832376D00CC639B /* LogoutViewController+Extension.swift */; };
 		57AB7969282E34F200D22124 /* MapTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB7968282E34F200D22124 /* MapTabViewController.swift */; };
 		57AB796B282E36AB00D22124 /* TableTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB796A282E36AB00D22124 /* TableTabViewController.swift */; };
 		57AB796D282E36EE00D22124 /* InfoPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57AB796C282E36EE00D22124 /* InfoPostingViewController.swift */; };
@@ -30,12 +30,16 @@
 		57C0FBE2282D76B700BB967E /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C0FBE1282D76B700BB967E /* LoginButton.swift */; };
 		57C0FBE4282D771100BB967E /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C0FBE3282D771100BB967E /* LoginTextField.swift */; };
 		57C55A5F2834DC4C0022775C /* ShowAlertViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C55A5E2834DC4C0022775C /* ShowAlertViewController+Extension.swift */; };
+		57CA2534283B900B0089C077 /* PinLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CA2533283B900B0089C077 /* PinLocation.swift */; };
 		57D0BFB32831641500D91263 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0BFB22831641400D91263 /* ErrorResponse.swift */; };
-		57EB729E283633D300CE0780 /* OpenWebsiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EB729D283633D200CE0780 /* OpenWebsiteViewController.swift */; };
+		57D7F405283A358000C1AE83 /* FindLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D7F404283A358000C1AE83 /* FindLocationViewController.swift */; };
+		57D7F407283A851800C1AE83 /* AddUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D7F406283A851800C1AE83 /* AddUserRequest.swift */; };
+		57E0FCBA283773AF00201621 /* ReloadPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E0FCB9283773AF00201621 /* ReloadPostsViewController.swift */; };
+		57EB729E283633D300CE0780 /* OpenWebsiteViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EB729D283633D200CE0780 /* OpenWebsiteViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5763BBDF2832376D00CC639B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		5763BBDF2832376D00CC639B /* LogoutViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LogoutViewController+Extension.swift"; sourceTree = "<group>"; };
 		57AB7968282E34F200D22124 /* MapTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTabViewController.swift; sourceTree = "<group>"; };
 		57AB796A282E36AB00D22124 /* TableTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableTabViewController.swift; sourceTree = "<group>"; };
 		57AB796C282E36EE00D22124 /* InfoPostingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPostingViewController.swift; sourceTree = "<group>"; };
@@ -60,8 +64,12 @@
 		57C0FBE1282D76B700BB967E /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		57C0FBE3282D771100BB967E /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		57C55A5E2834DC4C0022775C /* ShowAlertViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShowAlertViewController+Extension.swift"; sourceTree = "<group>"; };
+		57CA2533283B900B0089C077 /* PinLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinLocation.swift; sourceTree = "<group>"; };
 		57D0BFB22831641400D91263 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
-		57EB729D283633D200CE0780 /* OpenWebsiteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWebsiteViewController.swift; sourceTree = "<group>"; };
+		57D7F404283A358000C1AE83 /* FindLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindLocationViewController.swift; sourceTree = "<group>"; };
+		57D7F406283A851800C1AE83 /* AddUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserRequest.swift; sourceTree = "<group>"; };
+		57E0FCB9283773AF00201621 /* ReloadPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadPostsViewController.swift; sourceTree = "<group>"; };
+		57EB729D283633D200CE0780 /* OpenWebsiteViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OpenWebsiteViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,9 +130,11 @@
 				57AB7968282E34F200D22124 /* MapTabViewController.swift */,
 				57AB796A282E36AB00D22124 /* TableTabViewController.swift */,
 				57AB796C282E36EE00D22124 /* InfoPostingViewController.swift */,
-				57EB729D283633D200CE0780 /* OpenWebsiteViewController.swift */,
+				57E0FCB9283773AF00201621 /* ReloadPostsViewController.swift */,
+				57EB729D283633D200CE0780 /* OpenWebsiteViewController+Extension.swift */,
+				57D7F404283A358000C1AE83 /* FindLocationViewController.swift */,
 				57C55A5E2834DC4C0022775C /* ShowAlertViewController+Extension.swift */,
-				5763BBDF2832376D00CC639B /* UIViewController+Extension.swift */,
+				5763BBDF2832376D00CC639B /* LogoutViewController+Extension.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -145,6 +155,7 @@
 			children = (
 				57C0FBE3282D771100BB967E /* LoginTextField.swift */,
 				57C0FBE1282D76B700BB967E /* LoginButton.swift */,
+				57CA2533283B900B0089C077 /* PinLocation.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -169,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				57C0FBD1282D6DDA00BB967E /* LoginRequest.swift */,
+				57D7F406283A851800C1AE83 /* AddUserRequest.swift */,
 			);
 			path = "UdacityAPI Requests";
 			sourceTree = "<group>";
@@ -259,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57D7F405283A358000C1AE83 /* FindLocationViewController.swift in Sources */,
 				57C0FBDC282D72A800BB967E /* SessionResponse.swift in Sources */,
 				57C0FBD0282D68D700BB967E /* StudentInformation.swift in Sources */,
 				57C0FBB4282D5FE500BB967E /* LoginViewController.swift in Sources */,
@@ -266,16 +279,19 @@
 				57C0FBB0282D5FE500BB967E /* AppDelegate.swift in Sources */,
 				57C0FBE0282D733E00BB967E /* DeleteResponse.swift in Sources */,
 				57C55A5F2834DC4C0022775C /* ShowAlertViewController+Extension.swift in Sources */,
+				57D7F407283A851800C1AE83 /* AddUserRequest.swift in Sources */,
 				57C0FBC9282D62AF00BB967E /* StudentInformationModel.swift in Sources */,
 				57C0FBD2282D6DDA00BB967E /* LoginRequest.swift in Sources */,
-				5763BBE02832376D00CC639B /* UIViewController+Extension.swift in Sources */,
+				5763BBE02832376D00CC639B /* LogoutViewController+Extension.swift in Sources */,
 				57C0FBDA282D724900BB967E /* UpdateStudentLocationResponse.swift in Sources */,
 				57C0FBE4282D771100BB967E /* LoginTextField.swift in Sources */,
+				57CA2534283B900B0089C077 /* PinLocation.swift in Sources */,
 				57C0FBE2282D76B700BB967E /* LoginButton.swift in Sources */,
 				57C0FBB2282D5FE500BB967E /* SceneDelegate.swift in Sources */,
 				57C0FBD6282D70E200BB967E /* PublicUserDataResponse.swift in Sources */,
 				57AB796D282E36EE00D22124 /* InfoPostingViewController.swift in Sources */,
-				57EB729E283633D300CE0780 /* OpenWebsiteViewController.swift in Sources */,
+				57E0FCBA283773AF00201621 /* ReloadPostsViewController.swift in Sources */,
+				57EB729E283633D300CE0780 /* OpenWebsiteViewController+Extension.swift in Sources */,
 				57D0BFB32831641500D91263 /* ErrorResponse.swift in Sources */,
 				57C0FBD8282D71D400BB967E /* StudentLocationResponse.swift in Sources */,
 				57C0FBDE282D732C00BB967E /* UdacityAPIResponse.swift in Sources */,

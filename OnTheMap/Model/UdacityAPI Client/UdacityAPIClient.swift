@@ -9,13 +9,14 @@ import Foundation
 #if canImport(FoundationNetworking)
 import FoundationNetworking
 #endif
+import MapKit
 
 class UdacityAPIClient {
     
     // MARK: - Authentication Properties
     struct Auth {
-        static var userId = ""
-        static var objectId = "c9t2intc4s60t6a96dh0"
+        static var userId = "11193021052"
+        static var objectId = "" //"c9t2intc4s60t6a96dh0"
         static var accountId = ""
         static var sessionId = ""
     }
@@ -27,10 +28,10 @@ class UdacityAPIClient {
         static let sessionPath = "/session"
         static let userIdPath = "/users"
         
-        case location
+        case studentLocation
         case limit(Int)
         case skip(Int, Int)
-        case order(String)
+        case order(limit: Int, sorted:String)
         case uniqueKey(String)
         case objectId(String)
         case sessionId
@@ -39,7 +40,7 @@ class UdacityAPIClient {
         
         var stringValue: String {
             switch self {
-            case .location:
+            case .studentLocation:
                 return Endpoints.base + Endpoints.studentLocationPath
             // specifies the maximum number of StudentLocation objects to return in the JSON response:
             case .limit(let maxToReturn):
@@ -52,8 +53,8 @@ class UdacityAPIClient {
              Prefixing a key name with a negative sign reverses the order (default order is ascending)
              such as -updatedAt:
              */
-            case .order(let keyName):
-                return Endpoints.base + Endpoints.studentLocationPath + "?order=\(keyName)"
+            case .order(let maxToReturn, let keyName):
+                return Endpoints.base + Endpoints.studentLocationPath + "?limit=\(maxToReturn)" + "&order=\(keyName)"
             // a unique key (user ID). Gets only student locations with a given user ID:
             case .uniqueKey(let userId):
                 return Endpoints.base + Endpoints.studentLocationPath + "?uniqueKey=\(userId)"
@@ -84,7 +85,7 @@ class UdacityAPIClient {
                 }
                 return
             }
-            //print(String(data: data, encoding: .utf8)!)
+           
             let decoder = JSONDecoder()
             //decoder.dateDecodingStrategy = .iso8601
             do {
@@ -261,11 +262,43 @@ class UdacityAPIClient {
     }
     
     class func getStudentInformation(completionHandler: @escaping ([StudentInformation.StudentsData], Error?) -> Void) {
-        taskForGETRequest(url: Endpoints.limit(100).url, responseType: StudentInformation.self) { (response, error) in
+        taskForGETRequest(url: Endpoints.order(limit: 100, sorted: "updatedAt").url, responseType: StudentInformation.self) { (response, error) in
             if let response = response {
                 completionHandler(response.results, nil)
             } else {
                 completionHandler([], error)
+            }
+        }
+    }
+    
+    class func postUserInformation(mapString: String, mediaURL: String, mapCoord: CLLocation, completionHandler: @escaping (Bool, Error?) -> Void) {
+        //let body = AddUserRequest(uniqueKey: <#String#>, firstName: <#String#>, lastName: <#String#>, mapString: <#String#>, mediaURL: <#String#>, latitude: <#Double#>, longitude: <#Double#>)
+        
+        let lat = mapCoord.coordinate.latitude
+        let long = mapCoord.coordinate.longitude
+        
+        let body = "{\"uniqueKey\": \(Auth.userId), \"firstName\": \"Ken\", \"lastName\": \"Gutierrez\",\"mapString\": \(mapString), \"mediaURL\": \(mediaURL),\"latitude\": \(lat), \"longitude\": \(long)}".data(using: .utf8)
+        
+        taskForPOSTRequest(url: Endpoints.studentLocation.url, gettingSessionId: false, body: body, responseType: StudentLocationResponse.self) { (response, error) in
+            if let response = response {
+                completionHandler(true, nil)
+                print("\(response)")
+            } else {
+                completionHandler(false, error)
+                print(error ?? "")
+            }
+        }
+    }
+    
+    class func updateUserInformation() {
+        let userData = AddUserRequest()
+        let body = "{\"uniqueKey\": \(Auth.userId), \"firstName\": \(userData.firstName), \"lastName\": \(userData.lastName),\"mapString\": \(userData.mapString), \"mediaURL\": \(userData.mediaURL),\"latitude\": \(userData.latitude), \"longitude\": \(userData.longitude)}".data(using: .utf8)
+        
+        taskForPUTRequest(url: Endpoints.objectId(Auth.userId).url, body: body, responseType: UpdateStudentLocationResponse.self) { (response, error) in
+            if let response = response {
+                print("\(response)")
+            } else {
+                print(error ?? "")
             }
         }
     }

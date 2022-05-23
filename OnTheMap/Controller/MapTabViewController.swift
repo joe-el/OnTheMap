@@ -11,7 +11,7 @@ import MapKit
 
 class MapTabViewController: UIViewController, MKMapViewDelegate {
     
-    // MARK: - Properties
+    // MARK: Properties
     /*
      The map. See the setup in the Storyboard file. Note particularly that the view controller
      is set up as the map view's delegate.
@@ -24,11 +24,11 @@ class MapTabViewController: UIViewController, MKMapViewDelegate {
      */
     var annotations = [MKPointAnnotation]()
     
-    // MARK: - Load View
+    // MARK: Load View
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.downloadLocationData()
+        self.downloadStudentData()
     }
     
     // MARK: - MKMapViewDelegate
@@ -57,17 +57,14 @@ class MapTabViewController: UIViewController, MKMapViewDelegate {
         return pinView
     }
 
-    
     /*
      This delegate method is implemented to respond to taps. It opens the system browser
      to the URL specified in the annotationViews subtitle property.
      */
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
-            //let app = UIApplication.shared
             if let toOpen = view.annotation?.subtitle! {
                 openWebsiteLink(urlString: toOpen)
-                //app.open(URL(string: toOpen)!)
             }
         }
     }
@@ -79,13 +76,13 @@ class MapTabViewController: UIViewController, MKMapViewDelegate {
 //        }
 //    }
 
-    // MARK: - Students Data
+    // MARK: Students Data
     
     /*
      Downloads the 100 most recent locations posted by students, saved as an array of structs,
-     append on to annotations, and then provided to mapView.
+     appended on to annotations, and then provided to mapView.
      */
-    func downloadLocationData() {
+    func downloadStudentData() {
         UdacityAPIClient.getStudentInformation() { studentsInfo, error in
             if error == nil {
                 StudentInformationModel.studentLocation = studentsInfo
@@ -133,6 +130,6 @@ class MapTabViewController: UIViewController, MKMapViewDelegate {
             // Finally we place the annotation in an array of annotations.
             annotations.append(annotation)
         }
-    }    
+    }
+    
 }
-

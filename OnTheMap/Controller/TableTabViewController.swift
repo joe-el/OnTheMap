@@ -10,7 +10,11 @@ import UIKit
 
 class TableTabViewController: UIViewController {
     
+    //MARK: Outlets
+    
     @IBOutlet weak var tableView: UITableView!
+    
+    //MARK: Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +27,8 @@ class TableTabViewController: UIViewController {
     }
     
 }
+
+//MARK: Controllers
 
 extension TableTabViewController: UITableViewDataSource, UITableViewDelegate {
 
@@ -42,7 +48,7 @@ extension TableTabViewController: UITableViewDataSource, UITableViewDelegate {
         // Previous method was deprecated, now I'm using content configuration to manage the cell’s properties:
         var contentConfig = cell.defaultContentConfiguration()
 
-        // Set the first and last name, URL link associated with the student’s pin, and image
+        // Set the first and last name, URL link associated with the student’s pin, and icon pin image:
         contentConfig.text = "\(students.firstName) \(students.lastName)"
         contentConfig.secondaryText = students.mediaURL
         contentConfig.image = UIImage(named: "icon_pin")
