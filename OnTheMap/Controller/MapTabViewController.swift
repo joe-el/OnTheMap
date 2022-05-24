@@ -9,14 +9,9 @@ import Foundation
 import UIKit
 import MapKit
 
-class MapTabViewController: UIViewController, MKMapViewDelegate {
+class MapTabViewController: UIViewController {
     
-    // MARK: Properties
-    /*
-     The map. See the setup in the Storyboard file. Note particularly that the view controller
-     is set up as the map view's delegate.
-     */
-    @IBOutlet weak var mapView: MKMapView!
+    //MARK: Properties
     
     /*
      We will create an MKPointAnnotation for each stored struct properties in "locations". The
@@ -24,14 +19,82 @@ class MapTabViewController: UIViewController, MKMapViewDelegate {
      */
     var annotations = [MKPointAnnotation]()
     
-    // MARK: Load View
+    //MARK: Outlets
+    
+    /*
+     The map. See the setup in the Storyboard file. Note particularly that the view controller
+     is set up as the map view's delegate.
+     */
+    @IBOutlet weak var mapView: MKMapView!
+    
+    //MARK: Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.downloadStudentData()
     }
+
+    //MARK: Students Data
     
-    // MARK: - MKMapViewDelegate
+    /*
+     Downloads the 100 most recent locations posted by students, saved as an array of structs,
+     appended on to annotations, and then provided to mapView.
+     */
+    func downloadStudentData() {
+        UdacityAPIClient.getStudentInformation() { studentsInfo, error in
+            if error == nil {
+                StudentInformationModel.studentLocation = studentsInfo
+                self.createAnnotations()
+                // When the array is complete, we add the annotations to the map.
+                self.mapView.addAnnotations(self.annotations)
+            } else {
+                self.handleFailureAlert(title: "Download Failed", message: error?.localizedDescription ?? "")
+            }
+        }
+    }
+    
+    func createAnnotations() {
+        /*
+         The "locations" array is an array of struct that are decoded from the JSON
+         data that you can download from UdacityAPI.
+         */
+        let locations = StudentInformationModel.studentLocation
+        
+        /*
+         The "locations" array is loaded with the student location data below. We are using the dictionaries
+         to create map annotations. This would be more stylish if the dictionaries were being
+         used to create custom structs.
+         */
+        for dictionary in locations {
+            
+            // Notice that the float values are being used to create CLLocationDegree values.
+            // This is a version of the Double type.
+            let lat = CLLocationDegrees(dictionary.latitude)
+            let long = CLLocationDegrees(dictionary.longitude)
+            
+            // The lat and long are used to create a CLLocationCoordinates2D instance.
+            let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+            
+            let first = dictionary.firstName
+            let last = dictionary.lastName
+            let mediaURL = dictionary.mediaURL
+            
+            // Here we create the annotation and set its coordiate, title, and subtitle properties
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            annotation.title = "\(first) \(last)"
+            annotation.subtitle = mediaURL
+            
+            // Finally we place the annotation in an array of annotations.
+            annotations.append(annotation)
+        }
+    }
+    
+}
+
+extension MapTabViewController: MKMapViewDelegate {
+    
+    //MARK: - MKMapViewDelegate
 
     /*
      Here we create a view with a "right callout accessory view". You might choose to look into other
@@ -76,60 +139,4 @@ class MapTabViewController: UIViewController, MKMapViewDelegate {
 //        }
 //    }
 
-    // MARK: Students Data
-    
-    /*
-     Downloads the 100 most recent locations posted by students, saved as an array of structs,
-     appended on to annotations, and then provided to mapView.
-     */
-    func downloadStudentData() {
-        UdacityAPIClient.getStudentInformation() { studentsInfo, error in
-            if error == nil {
-                StudentInformationModel.studentLocation = studentsInfo
-                self.createAnnotations()
-                // When the array is complete, we add the annotations to the map.
-                self.mapView.addAnnotations(self.annotations)
-            } else {
-                self.handleFailureAlert(title: "Download Failed", message: error?.localizedDescription ?? "")
-            }
-        }
-    }
-    
-    func createAnnotations() {
-        /*
-         The "locations" array is an array of struct that are decoded from the JSON
-         data that you can download from UdacityAPI.
-         */
-        let locations = StudentInformationModel.studentLocation //hardCodedLocationData()
-        
-        /*
-         The "locations" array is loaded with the student location data below. We are using the dictionaries
-         to create map annotations. This would be more stylish if the dictionaries were being
-         used to create custom structs.
-         */
-        for dictionary in locations {
-            
-            // Notice that the float values are being used to create CLLocationDegree values.
-            // This is a version of the Double type.
-            let lat = CLLocationDegrees(dictionary.latitude)
-            let long = CLLocationDegrees(dictionary.longitude)
-            
-            // The lat and long are used to create a CLLocationCoordinates2D instance.
-            let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-            
-            let first = dictionary.firstName
-            let last = dictionary.lastName
-            let mediaURL = dictionary.mediaURL
-            
-            // Here we create the annotation and set its coordiate, title, and subtitle properties
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = coordinate
-            annotation.title = "\(first) \(last)"
-            annotation.subtitle = mediaURL
-            
-            // Finally we place the annotation in an array of annotations.
-            annotations.append(annotation)
-        }
-    }
-    
 }

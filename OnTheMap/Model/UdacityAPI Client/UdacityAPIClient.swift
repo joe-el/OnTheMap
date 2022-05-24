@@ -19,6 +19,7 @@ class UdacityAPIClient {
         static var objectId = "" //"c9t2intc4s60t6a96dh0"
         static var accountId = ""
         static var sessionId = ""
+        static var registered = false
     }
 
     // MARK: - Udacity API URL's
@@ -253,6 +254,7 @@ class UdacityAPIClient {
             if let response = response {
                 // To authenticate Udacity API requests, we need to get a session ID:
                 Auth.sessionId = response.session.id
+                Auth.registered = response.account.registered
                 completionHandler(true, nil)
                 print("\(response)\n")
             } else {
@@ -262,7 +264,7 @@ class UdacityAPIClient {
     }
     
     class func getStudentInformation(completionHandler: @escaping ([StudentInformation.StudentsData], Error?) -> Void) {
-        taskForGETRequest(url: Endpoints.order(limit: 100, sorted: "updatedAt").url, responseType: StudentInformation.self) { (response, error) in
+        taskForGETRequest(url: Endpoints.order(limit: 100, sorted: "-updatedAt").url, responseType: StudentInformation.self) { (response, error) in
             if let response = response {
                 completionHandler(response.results, nil)
             } else {
@@ -272,33 +274,42 @@ class UdacityAPIClient {
     }
     
     class func postUserInformation(mapString: String, mediaURL: String, mapCoord: CLLocation, completionHandler: @escaping (Bool, Error?) -> Void) {
-        //let body = AddUserRequest(uniqueKey: <#String#>, firstName: <#String#>, lastName: <#String#>, mapString: <#String#>, mediaURL: <#String#>, latitude: <#Double#>, longitude: <#Double#>)
-        
         let lat = mapCoord.coordinate.latitude
         let long = mapCoord.coordinate.longitude
         
-        let body = "{\"uniqueKey\": \(Auth.userId), \"firstName\": \"Ken\", \"lastName\": \"Gutierrez\",\"mapString\": \(mapString), \"mediaURL\": \(mediaURL),\"latitude\": \(lat), \"longitude\": \(long)}".data(using: .utf8)
+        let body = AddUserRequest(uniqueKey: Auth.userId, firstName: "Ken", lastName: "Gutierrez", mapString: mapString, mediaURL: mediaURL, latitude: lat, longitude: long)
         
         taskForPOSTRequest(url: Endpoints.studentLocation.url, gettingSessionId: false, body: body, responseType: StudentLocationResponse.self) { (response, error) in
-            if let response = response {
+            if response != nil {
                 completionHandler(true, nil)
-                print("\(response)")
             } else {
                 completionHandler(false, error)
-                print(error ?? "")
             }
         }
     }
     
-    class func updateUserInformation() {
-        let userData = AddUserRequest()
-        let body = "{\"uniqueKey\": \(Auth.userId), \"firstName\": \(userData.firstName), \"lastName\": \(userData.lastName),\"mapString\": \(userData.mapString), \"mediaURL\": \(userData.mediaURL),\"latitude\": \(userData.latitude), \"longitude\": \(userData.longitude)}".data(using: .utf8)
+    class func checkPinBeenPosted(uniqueKey: String, completionHandler: @escaping (Bool, Error?) -> Void) {
+        taskForGETRequest(url: Endpoints.uniqueKey(uniqueKey).url, responseType: StudentLocationResponse.self) { (response, error) in
+            if response != nil {
+                completionHandler(true, nil)
+            } else {
+                completionHandler(false, error)
+            }
+        }
+    }
+    
+    class func updateUserInformation(mapString: String, mediaURL: String, mapCoord: CLLocation, completionHandler: @escaping(Bool, Error?) -> Void) {
+        let lat = mapCoord.coordinate.latitude
+        let long = mapCoord.coordinate.longitude
+        
+        let body = AddUserRequest(uniqueKey: Auth.userId, firstName: "Ken", lastName: "Gutierrez", mapString: mapString, mediaURL: mediaURL, latitude: lat, longitude: long)
         
         taskForPUTRequest(url: Endpoints.objectId(Auth.userId).url, body: body, responseType: UpdateStudentLocationResponse.self) { (response, error) in
-            if let response = response {
-                print("\(response)")
+            if response != nil {
+                completionHandler(true, nil)
+                print("\(String(describing: response))")
             } else {
-                print(error ?? "")
+                completionHandler(false, error)
             }
         }
     }

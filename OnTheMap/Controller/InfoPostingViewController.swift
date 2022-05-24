@@ -11,11 +11,15 @@ import MapKit
 
 class InfoPostingViewController: UIViewController {
     
+    //MARK: Properties
+    
+    //MARK: Outlets
+    
     @IBOutlet weak var geocodingActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var linkTextField: UITextField!
     
-    var updateUserInformation = AddUserRequest()
+    //MARK: Actions
     
     @IBAction func findLocation(_ sender: UIButton) {
         setLogginIn(true)
@@ -27,6 +31,8 @@ class InfoPostingViewController: UIViewController {
         setLogginIn(false)
         dismiss(animated: true, completion: nil)
     }
+    
+    //MARK: Helper Methods
     
     //  Getting a coordinate from an address string:
     func getCoordinate(addressString : String, completionHandler: @escaping(CLLocationCoordinate2D, NSError?) -> Void ) {
@@ -46,35 +52,20 @@ class InfoPostingViewController: UIViewController {
     func handleFindLocationResponse(locationCoord: CLLocationCoordinate2D, error: Error?) {
         setLogginIn(false)
         if error == nil {
-            updateUserInformation.mapString = self.locationTextField.text ?? ""
-            updateUserInformation.mediaURL = self.linkTextField.text ?? ""
-            updateUserInformation.latitude = locationCoord.latitude
-            updateUserInformation.longitude = locationCoord.longitude
-            
             var controller: FindLocationViewController
             
             controller = storyboard?.instantiateViewController(withIdentifier: "geocodeUser") as! FindLocationViewController
             
             controller.locationName = self.locationTextField.text ?? ""
+            controller.webLink =  self.linkTextField.text ?? ""
             controller.lat = locationCoord.latitude
             controller.long = locationCoord.longitude
             
             present(controller, animated: true, completion: nil)
-            //self.performSegue(withIdentifier: "geocodeUser", sender: nil)
         } else {
-            self.handleFailureAlert(title: "Geocoding Failed", message: error?.localizedDescription ?? "Unable to Find The Location.")
+            handleFailureAlert(title: "Geocoding Failed", message: error?.localizedDescription ?? "Unable to Find The Location.")
         }
     }
-    
-//    func handlePostingUserResponse(success: Bool, error: Error?) {
-//        setLogginIn(false)
-//        if success {
-//            self.performSegue(withIdentifier: "geocodeUser", sender: nil)
-//        }
-//        else {
-//            self.handleFailureAlert(title: "Posting Failed", message: error?.localizedDescription ?? "Unable to Post User Information.")
-//        }
-//    }
     
     func setLogginIn(_ logginIn : Bool) {
         if logginIn {

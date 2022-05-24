@@ -8,7 +8,7 @@
 import Foundation
 
 // Posting user information:
-struct AddUserRequest {
+struct AddUserRequest: Codable {
     
     var uniqueKey: String
     var firstName: String
@@ -17,15 +17,5 @@ struct AddUserRequest {
     var mediaURL: String
     var latitude: Double
     var longitude: Double
-    
-    init() {
-        uniqueKey = ""
-        firstName = "Ken"
-        lastName = "Gutierrez"
-        mapString = ""
-        mediaURL = ""
-        latitude = 0.0
-        longitude = 0.0
-    }
     
 }
