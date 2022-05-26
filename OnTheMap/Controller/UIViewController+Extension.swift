@@ -22,14 +22,17 @@ extension UIViewController {
         }
     }
     
-    @IBAction func updateExistingStudentLocale(_ sender: UIBarButtonItem) {
-        if UdacityAPIClient.Auth.registered == true {
+    @IBAction func addStudentInformation(_ sender: UIBarButtonItem) {
+        let userHadPosted = UdacityAPIClient.Auth.objectId != ""
+        
+        if userHadPosted {
             // Create the action buttons for the alert.
             let defaultAction = UIAlertAction(title: "Overwrite", style: .default) { (action) in
                 // Respond to user selection of the action.
+                self.handleAlertOverwriteResponse(userHadPosted: true)
                 }
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
-                // Respond to user selection of the action.
+                // Respond to user selection of the action—which to cancel the alert.
                 }
                
             // Create and configure the alert controller.
@@ -37,16 +40,28 @@ extension UIViewController {
             postingAlert.addAction(defaultAction)
             postingAlert.addAction(cancelAction)
                     
-            present(postingAlert, animated: true) {
-                // The alert was presented
-            }
+            present(postingAlert, animated: true, completion: nil)
+        } else {
+            handleAlertOverwriteResponse(userHadPosted: false)
         }
+    }
+    
+    func handleAlertOverwriteResponse(userHadPosted: Bool) {
+        UdacityAPIClient.Auth.pinAlreadyPosted = userHadPosted
+        self.performSegue(withIdentifier: "addLocation", sender: nil)
     }
     
     @IBAction func logoutTapped(_ sender: UIBarButtonItem) {
         UdacityAPIClient.logout { (success, error) in
             if success {
-                self.dismiss(animated: true, completion: nil)
+                //need to have the loginViewController presented
+                guard let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "loginView") else {
+                    return self.dismiss(animated: true, completion: nil)
+                }
+                // Changed the presentation style, modalPresentationStyle:
+                loginVC.modalPresentationStyle = .fullScreen
+                loginVC.modalTransitionStyle = .flipHorizontal
+                self.present(loginVC, animated: true)
             } else {
                 self.handleFailureAlert(title: "Logout Failed", message: error?.localizedDescription ?? "")
             }

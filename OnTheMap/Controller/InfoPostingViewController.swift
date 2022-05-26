@@ -28,7 +28,7 @@ class InfoPostingViewController: UIViewController {
     }
     
     @IBAction func returnToTabbedView(_ sender: UIBarButtonItem) {
-        setLogginIn(false)
+        //setLogginIn(false)
         dismiss(animated: true, completion: nil)
     }
     

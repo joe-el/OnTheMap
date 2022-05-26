@@ -13,6 +13,7 @@ class FindLocationViewController: UIViewController {
     
     //MARK: Properties
     
+    let segueToTabView = LoginViewController()
     var locationName: String!
     var webLink: String!
     var lat: Double!
@@ -43,7 +44,7 @@ class FindLocationViewController: UIViewController {
     
     // Tapping the “Finish” button will post the location and link to the server:
     @IBAction func finishButtonTapped(_ sender: UIButton) {
-        if UdacityAPIClient.Auth.registered == false {
+        if UdacityAPIClient.Auth.pinAlreadyPosted == false {
             UdacityAPIClient.postUserInformation(mapString: locationName, mediaURL: webLink, mapCoord: usersLocation, completionHandler: handleFinishResponse(success:error:))
         } else {
             UdacityAPIClient.updateUserInformation(mapString: locationName, mediaURL: webLink, mapCoord: usersLocation, completionHandler: handleFinishResponse(success:error:))
@@ -59,8 +60,16 @@ class FindLocationViewController: UIViewController {
     
     // Either dismiss the map view if posting was successful or show an alert with error message:
     func handleFinishResponse(success: Bool, error: Error?) {
+        // Return back to Map and Table Tabbed View:
         if success {
-            dismiss(animated: true, completion: nil)
+            guard let vc = storyboard?.instantiateViewController(withIdentifier: "mainView") else {
+                return dismiss(animated: true, completion: nil)
+            }
+            // need to change the presentation style, modalPresentationStyle:
+            vc.modalPresentationStyle = .fullScreen
+            vc.modalTransitionStyle = .flipHorizontal
+            present(vc, animated: true)
+            //segueToTabView.performSegue(withIdentifier: "completeLogin", sender: nil)
         } else {
             self.handleFailureAlert(title: "Posting Failed", message: error?.localizedDescription ?? "Unable to Post User Information.")
         }

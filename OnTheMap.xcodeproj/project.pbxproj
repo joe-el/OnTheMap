@@ -28,7 +28,6 @@
 		57CA2534283B900B0089C077 /* PinLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CA2533283B900B0089C077 /* PinLocation.swift */; };
 		57D0BFB32831641500D91263 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D0BFB22831641400D91263 /* ErrorResponse.swift */; };
 		57D7F405283A358000C1AE83 /* FindLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D7F404283A358000C1AE83 /* FindLocationViewController.swift */; };
-		57D7F407283A851800C1AE83 /* AddUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D7F406283A851800C1AE83 /* AddUserRequest.swift */; };
 		57E0FCBA283773AF00201621 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E0FCB9283773AF00201621 /* UIViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,7 +55,6 @@
 		57CA2533283B900B0089C077 /* PinLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinLocation.swift; sourceTree = "<group>"; };
 		57D0BFB22831641400D91263 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		57D7F404283A358000C1AE83 /* FindLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindLocationViewController.swift; sourceTree = "<group>"; };
-		57D7F406283A851800C1AE83 /* AddUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserRequest.swift; sourceTree = "<group>"; };
 		57E0FCB9283773AF00201621 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -163,7 +161,6 @@
 			isa = PBXGroup;
 			children = (
 				57C0FBD1282D6DDA00BB967E /* LoginRequest.swift */,
-				57D7F406283A851800C1AE83 /* AddUserRequest.swift */,
 			);
 			path = "UdacityAPI Requests";
 			sourceTree = "<group>";
@@ -260,7 +257,6 @@
 				57C0FBCE282D678300BB967E /* UdacityAPIClient.swift in Sources */,
 				57C0FBB0282D5FE500BB967E /* AppDelegate.swift in Sources */,
 				57C0FBE0282D733E00BB967E /* DeleteResponse.swift in Sources */,
-				57D7F407283A851800C1AE83 /* AddUserRequest.swift in Sources */,
 				57C0FBC9282D62AF00BB967E /* StudentInformationModel.swift in Sources */,
 				57C0FBD2282D6DDA00BB967E /* LoginRequest.swift in Sources */,
 				57C0FBDA282D724900BB967E /* UpdateStudentLocationResponse.swift in Sources */,

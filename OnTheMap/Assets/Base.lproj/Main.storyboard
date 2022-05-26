@@ -11,7 +11,7 @@
         <!--Log In-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Log In" id="BYZ-38-t0r" customClass="LoginViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginView" title="Log In" id="BYZ-38-t0r" customClass="LoginViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -253,7 +253,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="HcG-9X-UXs">
             <objects>
-                <tabBarController id="fEc-ri-TgG" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="mainView" id="fEc-ri-TgG" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" id="Edz-0N-x2W">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -319,7 +319,7 @@
                         <rightBarButtonItems>
                             <barButtonItem image="icon_addpin" landscapeImage="icon_addpin" largeContentSizeImage="icon_addpin" id="CNx-1P-hb7">
                                 <connections>
-                                    <segue destination="eW2-hC-Odm" kind="presentation" id="CwL-Dc-LJ8"/>
+                                    <action selector="addStudentInformation:" destination="3wz-RM-yUa" id="b8X-L8-H0P"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="icon_refresh" landscapeImage="icon_refresh" largeContentSizeImage="icon_refresh" id="Fjw-ne-GD3">
@@ -332,6 +332,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="b49-NN-NQe" id="vc5-hT-6at"/>
+                        <segue destination="eW2-hC-Odm" kind="presentation" identifier="addLocation" id="7cS-JN-dhs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QrP-Sz-94K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -418,7 +419,7 @@
                         <rightBarButtonItems>
                             <barButtonItem image="icon_addpin" landscapeImage="icon_addpin" largeContentSizeImage="icon_addpin" id="VsN-GR-haO">
                                 <connections>
-                                    <segue destination="eW2-hC-Odm" kind="presentation" id="BOJ-CF-Ga5"/>
+                                    <action selector="addStudentInformation:" destination="aEm-q7-Sbw" id="7Rc-P3-5E4"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="icon_refresh" landscapeImage="icon_refresh" largeContentSizeImage="icon_refresh" id="Dkj-pX-9lA">
@@ -430,6 +431,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="ekK-va-UEZ" id="N8X-su-tAl"/>
+                        <segue destination="eW2-hC-Odm" kind="presentation" identifier="addLocation" id="Jan-mt-IHy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fgu-NG-krZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -438,7 +440,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="CwL-Dc-LJ8"/>
+        <segue reference="7cS-JN-dhs"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="icon_addpin" width="24" height="24"/>
