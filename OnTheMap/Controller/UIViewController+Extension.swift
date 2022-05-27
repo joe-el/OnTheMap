@@ -54,11 +54,11 @@ extension UIViewController {
     @IBAction func logoutTapped(_ sender: UIBarButtonItem) {
         UdacityAPIClient.logout { (success, error) in
             if success {
-                //need to have the loginViewController presented
+                // Instantiate the LoginViewController:
                 guard let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "loginView") else {
                     return self.dismiss(animated: true, completion: nil)
                 }
-                // Changed the presentation style, modalPresentationStyle:
+                // Changed the presentation and transition style of the viewController:
                 loginVC.modalPresentationStyle = .fullScreen
                 loginVC.modalTransitionStyle = .flipHorizontal
                 self.present(loginVC, animated: true)

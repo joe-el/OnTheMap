@@ -13,7 +13,6 @@ class FindLocationViewController: UIViewController {
     
     //MARK: Properties
     
-    let segueToTabView = LoginViewController()
     var locationName: String!
     var webLink: String!
     var lat: Double!
@@ -62,19 +61,22 @@ class FindLocationViewController: UIViewController {
     func handleFinishResponse(success: Bool, error: Error?) {
         // Return back to Map and Table Tabbed View:
         if success {
-            guard let vc = storyboard?.instantiateViewController(withIdentifier: "mainView") else {
-                return dismiss(animated: true, completion: nil)
-            }
-            // need to change the presentation style, modalPresentationStyle:
-            vc.modalPresentationStyle = .fullScreen
-            vc.modalTransitionStyle = .flipHorizontal
-            present(vc, animated: true)
-            //segueToTabView.performSegue(withIdentifier: "completeLogin", sender: nil)
+            // Instantiate the TabBarViewController:
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let MapTabViewVC = storyboard.instantiateViewController(withIdentifier: "mainView")
+            // Changed the presentation and transition style of the viewController:
+            MapTabViewVC.modalPresentationStyle = .fullScreen
+            MapTabViewVC.modalTransitionStyle = .flipHorizontal
+            present(MapTabViewVC, animated: true)
         } else {
             self.handleFailureAlert(title: "Posting Failed", message: error?.localizedDescription ?? "Unable to Post User Information.")
         }
     }
     
+    // This deinit is only availabe to Swift classes, used for verify the stack behavior:
+    deinit {
+        print("View Controller Deallocated.")
+    }
 }
 
 private extension MKMapView {

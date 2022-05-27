@@ -9,6 +9,7 @@ import Foundation
 
 struct StudentInformation: Codable {
     
+    //a StudentInformation struct to store individual locations and links downloaded from the web service:
     struct StudentsData: Codable {
         /* YOU DO NOT HAVE TO WORRY ABOUT PARSING DATE OR ACL TYPES. */
         // the date when the student location was created:

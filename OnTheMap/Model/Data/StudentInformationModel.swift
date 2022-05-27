@@ -8,5 +8,6 @@
 import Foundation
 
 class StudentInformationModel {
+    // Storing the array of StudentInformation structs:
     static var studentLocation = [StudentInformation.StudentsData]()
 }
