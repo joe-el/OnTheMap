@@ -11,7 +11,7 @@ import MapKit
 
 class MapTabViewController: UIViewController {
     
-    //MARK: Properties
+    //MARK: - Properties:
     
     /*
      We will create an MKPointAnnotation for each stored struct properties in "locations". The
@@ -19,7 +19,7 @@ class MapTabViewController: UIViewController {
      */
     var annotations = [MKPointAnnotation]()
     
-    //MARK: Outlets
+    //MARK: - Outlets:
     
     /*
      The map. See the setup in the Storyboard file. Note particularly that the view controller
@@ -27,14 +27,14 @@ class MapTabViewController: UIViewController {
      */
     @IBOutlet weak var mapView: MKMapView!
     
-    //MARK: Life Cycle
+    //MARK: - Life Cycle:
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.downloadStudentData()
     }
 
-    //MARK: Students Data
+    //MARK: - Students Data:
     
     /*
      Downloads the 100 most recent locations posted by students, saved as an array of structs,
@@ -94,7 +94,7 @@ class MapTabViewController: UIViewController {
 
 extension MapTabViewController: MKMapViewDelegate {
     
-    //MARK: - MKMapViewDelegate
+    //MARK: - MKMapViewDelegate:
 
     /*
      Here we create a view with a "right callout accessory view". You might choose to look into other
@@ -131,12 +131,5 @@ extension MapTabViewController: MKMapViewDelegate {
             }
         }
     }
-//    func mapView(mapView: MKMapView, annotationView: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-//
-//        if control == annotationView.rightCalloutAccessoryView {
-//            let app = UIApplication.sharedApplication()
-//            app.openURL(NSURL(string: annotationView.annotation.subtitle))
-//        }
-//    }
 
 }

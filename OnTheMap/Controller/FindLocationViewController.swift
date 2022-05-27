@@ -11,7 +11,7 @@ import MapKit
 
 class FindLocationViewController: UIViewController {
     
-    //MARK: Properties
+    //MARK: - Properties:
     
     var locationName: String!
     var webLink: String!
@@ -19,11 +19,11 @@ class FindLocationViewController: UIViewController {
     var long: Double!
     var usersLocation: CLLocation!
     
-    //MARK: Outlets
+    //MARK: - Outlets:
     
     @IBOutlet weak var findLocationMapView: MKMapView!
     
-    //MARK: Life Cycle
+    //MARK: - Life Cycle:
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,7 @@ class FindLocationViewController: UIViewController {
         findLocationMapView.addAnnotation(pinLocation)
     }
     
-    //MARK: Actions
+    //MARK: - Actions:
     
     // Tapping the “Finish” button will post the location and link to the server:
     @IBAction func finishButtonTapped(_ sender: UIButton) {
@@ -55,7 +55,7 @@ class FindLocationViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    //MARK: Helper Methods
+    //MARK: - Helper Methods:
     
     // Either dismiss the map view if posting was successful or show an alert with error message:
     func handleFinishResponse(success: Bool, error: Error?) {
@@ -81,7 +81,7 @@ class FindLocationViewController: UIViewController {
 
 private extension MKMapView {
     
-    //MARK: MKMapView Extension
+    //MARK: - MKMapView Extension:
     
     // Specify the rectangular region to display and getting a zoom level:
     func centerToLocation(_ location: CLLocation, regionRadius: CLLocationDistance = 1000) {

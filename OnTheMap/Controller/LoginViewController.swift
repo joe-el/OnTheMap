@@ -7,9 +7,10 @@
 
 import UIKit
 import FBSDKLoginKit
-//import FacebookLogin
 
 class LoginViewController: UIViewController {
+    
+    //MARK: - Outlets:
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var loginButton: UIButton!
@@ -17,10 +18,14 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
 
+    //MARK: - Life Cycle:
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
+    //MARK: - Actions:
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         setLogginIn(true)
@@ -35,6 +40,8 @@ class LoginViewController: UIViewController {
     @IBAction func loginViaWebsiteTapped() {
         UIApplication.shared.open(UdacityAPIClient.Endpoints.signUp.url, options: [:], completionHandler: nil)
     }
+    
+    //MARK: - Helper Methods:
     
     func handleLoginResponse(success: Bool, error: Error?) {
         setLogginIn(false)
@@ -82,6 +89,7 @@ class LoginViewController: UIViewController {
         }
     }
     
+    // Start or Stop activityIndicator:
     func setLogginIn(_ logginIn : Bool) {
         if logginIn {
             self.activityIndicator.startAnimating()
@@ -95,26 +103,5 @@ class LoginViewController: UIViewController {
         self.loginButton.isEnabled = !logginIn
         self.loginViaWebsiteButton.isEnabled = !logginIn
     }
+    
 }
-
-/*
- Key Delegate & Datasource Q:
- What should a UITableView ask its delegate & datasource?
- UITableViewDelegate    UITableViewDataSource
- Responses to User Events    Access to Data and Cells
-
- Think of delegates as being associated with events and the data source as being associated with data.
-
- The table uses its delegate protocol to ask event questions like these.
-     → What should happen when a button in a cell is tapped?
-     → What should be the response to cell selection?
-     → How should I respond when a user begins edditing a row?
-     → What should happen when a cell is deselected?
-
- The table uses its data source protocol to ask a data questions like these.
-     → How many rows do I have?
-     → How many sections do I have?
-     → What are the titles for the sections?
-     → What is the cell view for each row?
-
- */

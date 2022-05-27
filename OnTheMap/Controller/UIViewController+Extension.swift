@@ -10,7 +10,7 @@ import UIKit
 
 extension UIViewController {
     
-    //MARK: Actions
+    //MARK: - Actions:
     @IBAction func reloadStudentPosts(_ sender: UIBarButtonItem) {
         UdacityAPIClient.getStudentInformation() { studentsInfo, error in
             if error == nil {
@@ -46,11 +46,6 @@ extension UIViewController {
         }
     }
     
-    func handleAlertOverwriteResponse(userHadPosted: Bool) {
-        UdacityAPIClient.Auth.pinAlreadyPosted = userHadPosted
-        self.performSegue(withIdentifier: "addLocation", sender: nil)
-    }
-    
     @IBAction func logoutTapped(_ sender: UIBarButtonItem) {
         UdacityAPIClient.logout { (success, error) in
             if success {
@@ -69,6 +64,11 @@ extension UIViewController {
     }
     
     //MARK: Helper Methods
+    func handleAlertOverwriteResponse(userHadPosted: Bool) {
+        UdacityAPIClient.Auth.pinAlreadyPosted = userHadPosted
+        self.performSegue(withIdentifier: "addLocation", sender: nil)
+    }
+    
     func openWebsiteLink(urlString: String?) {
         guard let urlString = urlString else {
             handleFailureAlert(title: "Failed to Open ", message: "No web address given.")

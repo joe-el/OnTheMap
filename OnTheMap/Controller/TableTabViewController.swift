@@ -10,11 +10,11 @@ import UIKit
 
 class TableTabViewController: UIViewController {
     
-    //MARK: Outlets
+    //MARK: - Outlets:
     
     @IBOutlet weak var tableView: UITableView!
     
-    //MARK: Life Cycle
+    //MARK: - Life Cycle:
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class TableTabViewController: UIViewController {
     
 }
 
-//MARK: Controllers
+//MARK: - Controllers:
 
 extension TableTabViewController: UITableViewDataSource, UITableViewDelegate {
 

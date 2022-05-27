@@ -4,10 +4,7 @@
 //
 //  Created by Kenneth Gutierrez on 5/15/22.
 //
-/*
- Error Response from Udacity API-
- {"status":403,"error":"Account not found or invalid credentials."}
- */
+
 import Foundation
 
 struct ErrorResponse: Codable {

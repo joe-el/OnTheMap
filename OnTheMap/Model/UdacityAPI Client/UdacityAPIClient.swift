@@ -13,7 +13,7 @@ import MapKit
 
 class UdacityAPIClient {
     
-    // MARK: - Authentication Properties
+    // MARK: - Authentication Properties:
     struct Auth {
         static var userId = ""
         static var firstName = ""
@@ -23,7 +23,7 @@ class UdacityAPIClient {
         static var pinAlreadyPosted = false
     }
 
-    // MARK: - Udacity API URL's
+    // MARK: - Udacity API URL's:
     enum Endpoints {
         static let base = "https://onthemap-api.udacity.com/v1"
         static let studentLocationPath = "/StudentLocation"
@@ -77,7 +77,8 @@ class UdacityAPIClient {
         }
     }
     
-    // MARK: - GETing multiple student locations at one time:
+    // MARK: - Helper Methods for API Requests:
+    // GETting student location:
     class func taskForGETRequest<ResponseType: Decodable>(url: URL, getPublicUserData: Bool, responseType: ResponseType.Type, completionHandler: @escaping (ResponseType?, Error?) -> Void) {
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
@@ -119,7 +120,7 @@ class UdacityAPIClient {
         task.resume()
     }
 
-    // MARK: - POSTing a new student location and a session:
+    // POSTing a new student location and a session:
     class func taskForPOSTRequest<RequestType: Encodable, ResponseType: Decodable>(url: URL, getSessionId: Bool, body: RequestType, responseType: ResponseType.Type, completionHandler: @escaping (ResponseType?, Error?) -> Void) {
         
         var request = URLRequest(url: url)
@@ -170,7 +171,7 @@ class UdacityAPIClient {
         task.resume()
     }
 
-    // MARK: - PUTing a student location by update an existing student location:
+    // PUTing a student location by update an existing student location:
     class func taskForPUTRequest<RequestType: Encodable, ResponseType: Decodable>(url: URL, body: RequestType, responseType: ResponseType.Type, completionHandler: @escaping (ResponseType?, Error?) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
@@ -200,7 +201,7 @@ class UdacityAPIClient {
         task.resume()
     }
 
-    // MARK: - DELETEing a session
+    // DELETEing a session
     class func taskForDELETERequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completionHandler: @escaping (ResponseType?, Error?) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
@@ -240,7 +241,7 @@ class UdacityAPIClient {
         task.resume()
     }
     
-    // MARK: - GETting Public User Data
+    // GETting Public User Data
     // retrieve some basic user information before posting data to Parse(Udacity):
     class func getPulicUserData(completionHandler: @escaping (Bool, Error?) -> Void) {
         taskForGETRequest(url: Endpoints.publicUserData.url, getPublicUserData: true, responseType: PublicUserDataResponse.self) { (response, error) in
@@ -254,7 +255,7 @@ class UdacityAPIClient {
         }
     }
     
-    // MARK: - Requests
+    // MARK: - Helper Methods for Making Requests:
     class func login(username: String, password: String, completionHandler: @escaping (Bool, Error?) -> Void) {
         let body = LoginRequest(udacity: LoginRequest.AuthPair(username: username, password: password))
         

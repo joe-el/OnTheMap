@@ -11,15 +11,13 @@ import MapKit
 
 class InfoPostingViewController: UIViewController {
     
-    //MARK: Properties
-    
     //MARK: Outlets
     
     @IBOutlet weak var geocodingActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var linkTextField: UITextField!
     
-    //MARK: Actions
+    //MARK: - Actions:
     
     @IBAction func findLocation(_ sender: UIButton) {
         setLogginIn(true)
@@ -32,7 +30,7 @@ class InfoPostingViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    //MARK: Helper Methods
+    //MARK: - Helper Methods:
     
     //  Getting a coordinate from an address string:
     func getCoordinate(addressString : String, completionHandler: @escaping(CLLocationCoordinate2D, NSError?) -> Void ) {
@@ -63,11 +61,6 @@ class InfoPostingViewController: UIViewController {
         } else {
             handleFailureAlert(title: "Geocoding Failed", message: error?.localizedDescription ?? "Unable to Find The Location.")
         }
-    }
-    
-    // This deinit is only availabe to Swift classes, used for verify the stack behavior:
-    deinit {
-        print("View Controller Deallocated.")
     }
     
     func setLogginIn(_ logginIn : Bool) {

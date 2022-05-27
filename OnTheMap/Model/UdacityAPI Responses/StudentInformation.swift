@@ -11,7 +11,6 @@ struct StudentInformation: Codable {
     
     //a StudentInformation struct to store individual locations and links downloaded from the web service:
     struct StudentsData: Codable {
-        /* YOU DO NOT HAVE TO WORRY ABOUT PARSING DATE OR ACL TYPES. */
         // the date when the student location was created:
         let createdAt: String?
         // the first name of the student which matches their Udacity profile first name OR an anonymized name hardcoded in your app (see above)::
@@ -32,14 +31,7 @@ struct StudentInformation: Codable {
         let uniqueKey: String
         // the date when the student location was last updated:
         let updatedAt: String?
-        // the Parse access and control list (ACL), i.e. permissions, for this StudentLocation entry:
-        /*
-         Define the access level for an entity by placing one of the open, public, internal,
-         fileprivate, or private modifiers at the beginning of the entity’s declaration.
-         For example, open let ACL, open var ACL, public var ACL, internal let ACL, fileprivate letACL,
-         private let ACL.
-         */
-        //let ACL: String
+        
     }
     
     let results: [StudentsData]
