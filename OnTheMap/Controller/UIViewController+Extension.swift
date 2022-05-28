@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import FBSDKLoginKit
 
 extension UIViewController {
     
@@ -49,6 +50,14 @@ extension UIViewController {
     @IBAction func logoutTapped(_ sender: UIBarButtonItem) {
         UdacityAPIClient.logout { (success, error) in
             if success {
+                // Access token available—user already logged in:
+                let loginManager = LoginManager()
+                
+                if let _ = AccessToken.current {
+                    // Perform logout:
+                    loginManager.logOut()
+                }
+                
                 // Instantiate the LoginViewController:
                 guard let loginVC = self.storyboard?.instantiateViewController(withIdentifier: "loginView") else {
                     return self.dismiss(animated: true, completion: nil)

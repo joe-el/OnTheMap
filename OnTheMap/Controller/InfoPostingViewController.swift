@@ -17,6 +17,15 @@ class InfoPostingViewController: UIViewController {
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var linkTextField: UITextField!
     
+    //MARK: - Life Cycle:
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Tap anywhere on the screen to dismiss the keyboard:
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+    }
+    
     //MARK: - Actions:
     
     @IBAction func findLocation(_ sender: UIButton) {
